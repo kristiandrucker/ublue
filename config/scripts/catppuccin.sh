@@ -5,6 +5,6 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
-# Your code goes here.
-echo 'This is an example shell script'
-echo 'Scripts here will run during build if specified in recipe.yml'
+curl -LsSO "https://raw.githubusercontent.com/catppuccin/gtk/v1.0.2/install.py"
+
+python3 install.py macchiato teal
