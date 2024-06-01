@@ -22,7 +22,7 @@ modules:
     install:
     # - micro
      - starship
-     - alacritty
+#     - alacritty
      - qemu-guest-agent
     remove:
     # example: removing firefox (in favor of the flatpak)
