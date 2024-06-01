@@ -1,5 +1,5 @@
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: ublue
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
@@ -39,6 +39,7 @@ modules:
       # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
       install:
         - com.google.Chrome
+        - org.gnome.Boxes
       # - org.mozilla.firefox
       # - org.gnome.Loupe
       # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
