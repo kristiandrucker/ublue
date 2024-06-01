@@ -1,14 +1,9 @@
-# image will be published to ghcr.io/<user>/<name>
 name: ublue
-# description will be included in the image's metadata
 description: This is my personal OS image.
 
-# the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/bluefin-dx
-image-version: 40 # latest is also supported if you want new updates ASAP
+image-version: 40
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: files
     files:
@@ -49,4 +44,12 @@ modules:
       remove:
       # - org.gnome.eog
 
+  - type: default-flatpaks
+    notify: true
+    system:
+      repo-url: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+      repo-name: onepassword
+      repo-title: "1Password (system-wide)"
+    install:
+      - com.onepassword.OnePassword
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
