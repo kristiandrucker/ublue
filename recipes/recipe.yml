@@ -1,7 +1,7 @@
 name: ublue
 description: This is my personal OS image.
 
-base-image: ghcr.io/ublue-os/bluefin-dx
+base-image: ghcr.io/ublue-os/bluefin-dx-nvidia
 image-version: 40
 
 modules:
