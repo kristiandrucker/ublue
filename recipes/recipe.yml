@@ -50,6 +50,6 @@ modules:
       repo-url: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
       repo-name: onepassword
       repo-title: "1Password (system-wide)"
-    install:
-      - com.onepassword.OnePassword
+      install:
+        - com.onepassword.OnePassword
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
