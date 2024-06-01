@@ -15,6 +15,8 @@ RELEASE="$(rpm -E %fedora)"
 # this installs a package from fedora repos
 rpm-ostree install screen qemu-guest-agent
 
+flatpak install flathub com.google.Chrome
+
 # this would install a package from rpmfusion
 # rpm-ostree install vlc
 
