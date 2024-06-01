@@ -7,4 +7,4 @@ set -oue pipefail
 
 curl -LsSO "https://raw.githubusercontent.com/catppuccin/gtk/v1.0.2/install.py"
 
-python3 install.py macchiato teal
+python3 install.py --dest /usr/share/themes macchiato teal
