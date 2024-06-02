@@ -17,7 +17,23 @@ modules:
 #      - https://raw.githubusercontent.com/kristiandrucker/ublue/main/repos/1password.repo
     install:
       - btop
+      - zsh
+      - doas
     remove:
+
+  - type: script
+    snippets:
+      - "rm -f /usr/bin/sudo"
+      - "ln -s /usr/bin/doas /usr/bin/sudo"
+
+  - type: gnome-extensions
+    install:
+      - 'Dash to Dock'
+      - 'Blur my Shell'
+      - 'Caffeine'
+      - 'User Themes'
+      - 'Tray Icons: Reloaded'
+      - 'Tiling Assistant'
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -32,6 +48,7 @@ modules:
         - org.gnome.Boxes
         - com.bitwarden.desktop
         - org.gnome.World.PikaBackup
+        - com.mattjakeman.ExtensionManager
       remove:
   
   - type: script
