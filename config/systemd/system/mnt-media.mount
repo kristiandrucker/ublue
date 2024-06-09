@@ -4,7 +4,7 @@ After=network.target
 
 [Mount]
 What=10.1.0.24:/Media
-Where=/mnt/media
+Where=/var/mnt/media
 Type=nfs
 Options=_netdev,auto
 
