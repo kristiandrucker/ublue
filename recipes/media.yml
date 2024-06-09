@@ -23,7 +23,7 @@ modules:
     system:
       enabled:
         - var-mnt-media.mount
-        - docker.service
+        - podman.service
         - plex.service
         - cockpit.service
 
