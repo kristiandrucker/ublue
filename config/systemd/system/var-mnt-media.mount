@@ -3,7 +3,7 @@ Description=Media mount
 After=network.target
 
 [Mount]
-What=10.1.0.24:/Media
+What=10.1.0.24:/volume1/Media
 Where=/var/mnt/media
 Type=nfs
 Options=_netdev,auto
