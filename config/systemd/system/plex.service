@@ -1,0 +1,27 @@
+[Unit]
+Description=Plex Container
+After=docker.service mnt-media.mount
+Requires=docker.service mnt-media.mount
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop plex
+ExecStartPre=-/usr/bin/docker rm plex
+# renovate: datasource=docker depName=lscr.io/linuxserver/plex
+ExecStartPre=/usr/bin/docker pull ghcr.io/linuxserver/plex:1.40.2.8395-c67dce28e-ls217@sha256:672c04ea6e46ed764cc300a11faaa153b344f5383380980739817d67d2f2951c
+ExecStart=/usr/bin/docker run --rm --name plex \
+		-e PUID=1000 \
+		-e GUID=1000 \
+		-e UMASK=002 \
+		-e TZ=Europe/Berlin \
+		-e VERSION=docker \
+		--device=/dev/dri:/dev/dri \
+		-v=/opt/plex/config:/config \
+		-v=/mnt/media/media:/data \
+		-v=/opt/plex/transcode:/transcode \
+		# renovate: datasource=docker depName=lscr.io/linuxserver/plex \
+		ghcr.io/linuxserver/plex:1.40.2.8395-c67dce28e-ls217@sha256:672c04ea6e46ed764cc300a11faaa153b344f5383380980739817d67d2f2951c
+
+[Install]
+WantedBy=multi-user.target
