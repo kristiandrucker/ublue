@@ -10,7 +10,7 @@ ExecStartPre=-/usr/bin/podman stop plex
 ExecStartPre=-/usr/bin/podman rm plex
 # renovate: datasource=docker depName=lscr.io/linuxserver/plex
 ExecStartPre=/usr/bin/podman pull ghcr.io/linuxserver/plex:1.40.2.8395-c67dce28e-ls217@sha256:672c04ea6e46ed764cc300a11faaa153b344f5383380980739817d67d2f2951c
-ExecStart=/usr/bin/podman run --rm --name plex \
+ExecStart=/usr/bin/podman run --rm --privileged --name plex \
 		-e PUID=1000 \
 		-e GUID=1000 \
 		-e UMASK=002 \
