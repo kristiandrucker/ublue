@@ -9,8 +9,8 @@ Restart=always
 ExecStartPre=-/usr/bin/podman stop plex
 ExecStartPre=-/usr/bin/podman rm plex
 # renovate: datasource=docker depName=lscr.io/linuxserver/plex
-ExecStartPre=/usr/bin/podman pull ghcr.io/linuxserver/plex:1.40.3.8555-fef15d30c-ls220@sha256:cca7679fde3724f03d13db34918bc8f331c222843208597f717e8e2bfc310f24
-ExecStart=/usr/bin/podman run --rm --privileged --name plex \
+ExecStartPre=/usr/bin/podman pull ghcr.io/linuxserver/plex:1.40.4.8679-424562606-ls223@sha256:f9bf7a37001d152b5d8193fc46edf5d5b8194a1c2692d67bfc189d0544203f99
+ExecStart=/usr/bin/podman run --rm --name plex \
 		-e PUID=1000 \
 		-e GUID=1000 \
 		-e UMASK=002 \
@@ -26,11 +26,12 @@ ExecStart=/usr/bin/podman run --rm --privileged --name plex \
     -p 32414:32414/udp \
     -p 32469:32469 \
 		--device=/dev/dri:/dev/dri \
+		--device=/dev/dgv:/dev/dvb \
 		-v=config:/config \
 		-v=/mnt/media/media:/data \
 		-v=transcode:/transcode \
 		# renovate: datasource=docker depName=lscr.io/linuxserver/plex \
-		ghcr.io/linuxserver/plex:1.40.3.8555-fef15d30c-ls220@sha256:cca7679fde3724f03d13db34918bc8f331c222843208597f717e8e2bfc310f24
+		ghcr.io/linuxserver/plex:1.40.4.8679-424562606-ls223@sha256:f9bf7a37001d152b5d8193fc46edf5d5b8194a1c2692d67bfc189d0544203f99
 
 [Install]
 WantedBy=multi-user.target
