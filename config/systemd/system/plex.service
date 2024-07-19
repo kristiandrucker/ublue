@@ -26,7 +26,7 @@ ExecStart=/usr/bin/podman run --rm --name plex \
     -p 32414:32414/udp \
     -p 32469:32469 \
 		--device=/dev/dri:/dev/dri \
-		--device=/dev/dgv:/dev/dvb \
+		--device=/dev/dvb:/dev/dvb \
 		-v=config:/config \
 		-v=/mnt/media/media:/data \
 		-v=transcode:/transcode \
