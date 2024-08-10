@@ -10,7 +10,7 @@ ExecStartPre=-/usr/bin/podman stop plex
 ExecStartPre=-/usr/bin/podman rm plex
 # renovate: datasource=docker depName=lscr.io/linuxserver/plex
 ExecStartPre=/usr/bin/podman pull ghcr.io/linuxserver/plex:1.40.4.8679-424562606-ls225@sha256:800e198f7216cf98b9fd11a4ad0aa1cae26cc516186b7fc1500b75893b3e57a1
-ExecStart=/usr/bin/podman run --rm --name --gpus all plex \
+ExecStart=/usr/bin/podman run --rm --name=plex --gpus=all \
 		-e PUID=1000 \
 		-e GUID=1000 \
 		-e UMASK=002 \
@@ -29,7 +29,6 @@ ExecStart=/usr/bin/podman run --rm --name --gpus all plex \
 		-v=config:/config \
 		-v=/mnt/media/media:/data \
 		-v=transcode:/transcode \
-		# renovate: datasource=docker depName=lscr.io/linuxserver/plex \
 		ghcr.io/linuxserver/plex:1.40.4.8679-424562606-ls225@sha256:800e198f7216cf98b9fd11a4ad0aa1cae26cc516186b7fc1500b75893b3e57a1
 
 [Install]
