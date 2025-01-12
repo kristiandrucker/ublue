@@ -3,14 +3,24 @@ Description=Nginx
 Requires=podman.socket
 After=podman.socket
 
-[Container]
+[X-Container]
 ContainerName=nginx
 Image=registry.docker.io/nginx:alpine
 PublishPort=80:80
 
+Label=io.containers.autoupdate=registry
+
 [Service]
-Restart=on-failure
-TimeoutStartSec=900
+Restart=always
+Environment=PODMAN_SYSTEMD_UNIT=%n
+KillMode=mixed
+ExecStopPost=-/usr/bin/podman rm -f -i --cidfile=%t/%N.cid
+ExecStopPost=-rm -f %t/%N.cid
+Delegate=yes
+Type=notify
+NotifyAccess=all
+SyslogIdentifier=%N
+ExecStart=/usr/bin/podman run --name=nginx --cidfile=%t/%N.cid --replace --rm  -d -v /:/host --label io.containers.autoupdate=registry --pid host registry.docker.io/nginx:alpine
 
 [Install]
 WantedBy=default.target
