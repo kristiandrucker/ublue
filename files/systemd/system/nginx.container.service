@@ -5,7 +5,7 @@ After=podman.socket
 
 [X-Container]
 ContainerName=nginx
-Image=registry.docker.io/nginx:alpine
+Image=docker.io/library/nginx:alpine
 PublishPort=80:80
 
 Label=io.containers.autoupdate=registry
@@ -20,7 +20,7 @@ Delegate=yes
 Type=notify
 NotifyAccess=all
 SyslogIdentifier=%N
-ExecStart=/usr/bin/podman run --name=nginx --cidfile=%t/%N.cid --replace --rm  -d -v /:/host --label io.containers.autoupdate=registry --pid host registry.docker.io/nginx:alpine
+ExecStart=/usr/bin/podman run --name=nginx --cidfile=%t/%N.cid --replace --rm  -d -v /:/host --label io.containers.autoupdate=registry --pid host docker.io/library/nginx:alpine
 
 [Install]
 WantedBy=default.target
