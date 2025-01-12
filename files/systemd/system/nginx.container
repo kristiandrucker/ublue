@@ -1,0 +1,16 @@
+[Unit]
+Description=Nginx
+Requires=podman.socket
+After=podman.socket
+
+[Container]
+ContainerName=nginx
+Image=registry.docker.io/nginx:alpine
+PublishPort=80:80
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
