@@ -1,0 +1,25 @@
+[Unit]
+Description=Nginx Proxy Manager (quadlet)
+
+[Container]
+Image=jc21/nginx-proxy-manager:latest
+ContainerName=proxy
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+PublishPort=80:80
+PublishPort=443:443
+PublishPort=81:81
+
+Volume=proxy-config:/data
+Volume=proxy-certs:/etc/letsencrypt
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

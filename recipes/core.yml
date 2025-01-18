@@ -29,9 +29,9 @@ modules:
     system:
       enabled:
 #        - var-mnt-media.mount
+        - nginx-proxy-manager.service
         - podman.service
-        - nginx.service
-        - httpd.service # Starts the httpd quadlet
+        - tailscaled.service
         - cockpit.service
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
