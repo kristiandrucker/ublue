@@ -1,0 +1,40 @@
+[Unit]
+Description=Plex (quadlet)
+
+[Container]
+Image=lscr.io/linuxserver/plex:latest
+ContainerName=plex
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=plex-config:/config
+Volume=/mnt/media:/media
+
+EnvironmentFile=plex.env
+
+PublishPort=32400:32400/tcp
+PublishPort=1900:1900/udp
+PublishPort=3005:3005/tcp
+PublishPort=5353:5353/udp
+PublishPort=8324:8324/tcp
+PublishPort=32410:32410/udp
+PublishPort=32412:32412/udp
+PublishPort=32413:32413/udp
+PublishPort=32414:32414/udp
+PublishPort=32469:32469/tcp
+
+AddDevice=/dev/dri
+
+[Unit]
+Requires=var-mnt-media.mount
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
