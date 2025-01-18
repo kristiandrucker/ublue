@@ -29,7 +29,6 @@ modules:
     system:
       enabled:
 #        - var-mnt-media.mount
-        - nginx-proxy-manager.service
         - podman.service
         - tailscaled.service
         - cockpit.service
