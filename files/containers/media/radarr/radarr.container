@@ -1,0 +1,21 @@
+[Unit]
+Description=Radarr (quadlet)
+
+[Container]
+Image=lscr.io/linuxserver/radarr:latest
+ContainerName=radarr
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=radarr-config:/config
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

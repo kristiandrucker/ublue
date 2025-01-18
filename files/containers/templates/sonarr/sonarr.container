@@ -1,0 +1,21 @@
+[Unit]
+Description=Sonarr (quadlet)
+
+[Container]
+Image=lscr.io/linuxserver/sonarr:latest
+ContainerName=sonarr
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=sonarr-config:/config
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
