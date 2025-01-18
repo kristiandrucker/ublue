@@ -2,7 +2,7 @@
 Description=Nginx Proxy Manager (quadlet)
 
 [Container]
-Image=jc21/nginx-proxy-manager:latest
+Image=docker.io/jc21/nginx-proxy-manager:latest
 ContainerName=proxy
 
 #flag for autoupdates
