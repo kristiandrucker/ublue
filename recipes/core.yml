@@ -11,15 +11,11 @@ modules:
         destination: /
 
       - source: containers/core
-        destination: /etc/containers/systemd/ # /etc/containers/systemd/users/20100
+        destination: /etc/containers/systemd/
 
   - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
-      - starship
       - btop
-      - zsh
 
   - type: container # this generates quadlet container files
     source: local
