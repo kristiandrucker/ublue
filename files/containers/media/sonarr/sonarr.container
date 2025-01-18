@@ -10,6 +10,8 @@ Label=io.containers.autoupdate=registry
 
 Network=proxy.network
 
+PublishPort=8989:8989
+
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=sonarr-config:/config
 
