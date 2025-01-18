@@ -14,10 +14,6 @@ PublishPort=9696:9696
 
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=prowlarr-config:/config
-Volume=/mnt/media/media:/media
-
-[Unit]
-Requires=var-mnt-media.mount
 
 [Service]
 Restart=always

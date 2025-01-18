@@ -14,7 +14,7 @@ PublishPort=7878:7878
 
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=radarr-config:/config
-Volume=/mnt/media/media:/media
+Volume=/mnt/media:/media
 
 [Unit]
 Requires=var-mnt-media.mount

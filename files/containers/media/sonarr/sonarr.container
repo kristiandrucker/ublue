@@ -14,7 +14,7 @@ PublishPort=8989:8989
 
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=sonarr-config:/config
-Volume=/mnt/media/media:/media
+Volume=/mnt/media:/media
 
 [Unit]
 Requires=var-mnt-media.mount
