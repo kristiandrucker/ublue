@@ -1,0 +1,14 @@
+[Unit]
+Description=nginx container quadlet file
+
+[Container]
+Image=docker.io/library/nginx:alpine
+ContainerName=nginx
+PublishPort=80:80
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,0 +1,8 @@
+name: container
+shortdesc: The container module streamlines the management of quadlet containers units during image building.
+example: |
+  type: container
+  # this example starts a privileged container and network
+  privileged:
+    - httpd.container
+    - proxy.network
