@@ -14,8 +14,8 @@ PublishPort=80:80
 PublishPort=443:443
 PublishPort=81:81
 
-Volume=proxy-config:/data
-Volume=proxy-certs:/etc/letsencrypt
+Volume=/mnt/data/proxy/config:/data
+Volume=/mnt/data/proxy/certs:/etc/letsencrypt
 
 [Service]
 Restart=always

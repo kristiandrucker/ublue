@@ -13,7 +13,7 @@ Network=proxy.network
 PublishPort=9696:9696
 
 Volume=/etc/localtime:/etc/localtime:ro
-Volume=prowlarr-config:/config
+Volume=/mnt/data/prowlarr/config:/config
 
 [Service]
 Restart=always

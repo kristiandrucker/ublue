@@ -17,7 +17,7 @@ PublishPort=6881:6881
 PublishPort=6881:6881/udp
 
 Volume=/etc/localtime:/etc/localtime:ro
-Volume=qbittorrent-config:/config
+Volume=/mnt/data/qbittorrent/config:/config
 Volume=/mnt/media:/media
 
 AddCapability=NET_ADMIN
