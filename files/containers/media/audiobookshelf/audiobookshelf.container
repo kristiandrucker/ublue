@@ -15,7 +15,7 @@ PublishPort=8081:80
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/audiobookshelf/config:/config
 Volume=/mnt/data/audiobookshelf/metadata:/metadata
-Volume=/mnt/media:/media
+Volume=/mnt/media:/audiobooks
 
 [Unit]
 Requires=var-mnt-media.mount
