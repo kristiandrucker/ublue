@@ -1,0 +1,32 @@
+[Unit]
+Description=Sabnzbd (quadlet)
+
+[Container]
+Image=lscr.io/linuxserver/sabnzbd:latest
+ContainerName=sabnzbd
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+EnvironmentFile=sab.env
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/mnt/data/sabnzbd/config:/config
+Volume=/mnt/media:/media
+
+AddCapability=NET_ADMIN
+
+Sysctl=net.ipv4.conf.all.src_valid_mark=1
+Sysctl=net.ipv6.conf.all.disable_ipv6=1
+
+[Unit]
+Requires=var-mnt-media.mount
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
