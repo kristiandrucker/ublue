@@ -2,7 +2,7 @@
 Description=Sabnzbd (quadlet)
 
 [Container]
-Image=lscr.io/linuxserver/sabnzbd:latest
+Image=ghcr.io/hotio/sabnzbd:latest
 ContainerName=sabnzbd
 
 #flag for autoupdates
