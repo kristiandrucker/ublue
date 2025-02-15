@@ -26,6 +26,7 @@ modules:
     system:
       enabled:
         - var-mnt-media.mount
+        - var-mnt-data.mount
         - podman.service
         - tailscaled.service
         - cockpit.service

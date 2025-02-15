@@ -1,0 +1,11 @@
+[Unit]
+Description=Data mount
+
+[Mount]
+What=/dev/vdb
+Where=/var/mnt/data
+Type=ext4
+Options=defaults,noatime,discard,errors=remount-ro
+
+[Install]
+WantedBy=multi-user.target
