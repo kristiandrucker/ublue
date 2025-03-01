@@ -1,0 +1,42 @@
+[Unit]
+Description=AdGuard Home DNS Server (quadlet)
+
+[Container]
+Image=docker.io/adguard/adguardhome:latest
+ContainerName=adguard-home
+
+# Flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=proxy.network
+
+# DNS ports
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+
+# Admin web interface port
+PublishPort=3000:3000/tcp
+
+# HTTP port for DNS-over-HTTPS, DNS-over-HTTP and web interface
+# PublishPort=8080:80/tcp
+
+# TLS port for DNS-over-TLS, DNS-over-HTTPS and web interface (HTTPS)
+# PublishPort=8443:443/tcp
+
+# DNS-over-QUIC port
+# PublishPort=784:784/udp
+# PublishPort=853:853/tcp
+
+# Static time configuration
+Volume=/etc/localtime:/etc/localtime:ro
+
+# Configuration and data volumes
+Volume=/mnt/data/adguard-home/work:/opt/adguardhome/work
+Volume=/mnt/data/adguard-home/conf:/opt/adguardhome/conf
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
