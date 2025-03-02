@@ -12,6 +12,7 @@ Network=proxy.network
 
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=plex-config:/config
+Volume=/mnt/data/plex:/config-new
 Volume=/mnt/media:/media
 
 PodmanArgs=--privileged
