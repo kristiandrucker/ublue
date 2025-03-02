@@ -14,6 +14,8 @@ Volume=/etc/localtime:/etc/localtime:ro
 Volume=plex-config:/config
 Volume=/mnt/media:/media
 
+PodmanArgs=--privileged
+
 EnvironmentFile=plex.env
 
 PublishPort=32400:32400/tcp
