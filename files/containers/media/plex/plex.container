@@ -15,8 +15,6 @@ Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/plex:/config:exec
 Volume=/mnt/media:/media
 
-PodmanArgs=--privileged
-
 EnvironmentFile=plex.env
 
 PublishPort=32400:32400/tcp
@@ -30,7 +28,7 @@ PublishPort=32413:32413/udp
 PublishPort=32414:32414/udp
 PublishPort=32469:32469/tcp
 
-AddDevice=/dev/dri:/dev/dri
+AddDevice=nvidia.com/gpu=all
 
 [Unit]
 Requires=var-mnt-media.mount
