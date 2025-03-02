@@ -29,7 +29,7 @@ PublishPort=32413:32413/udp
 PublishPort=32414:32414/udp
 PublishPort=32469:32469/tcp
 
-AddDevice=/dev/dri
+AddDevice=/dev/dri:/dev/dri
 
 [Unit]
 Requires=var-mnt-media.mount
