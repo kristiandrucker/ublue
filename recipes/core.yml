@@ -29,7 +29,7 @@ modules:
         - podman.service
         - tailscaled.service
         - cockpit.service
-        - podman-auto-update.timer
-        - bootc-upgrade.timer
+#        - podman-auto-update.timer
+#        - bootc-upgrade.timer
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
