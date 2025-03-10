@@ -19,6 +19,7 @@ Volume=/mnt/data/tempo/data:/data
 
 Environment=TEMPO_STORAGE_TRACE_RETENTION=2160h
 Environment=TEMPO_SERVER_HTTP_LISTEN_PORT=3200
+Environment=TEMPO_CONFIG=/etc/tempo/tempo.yaml
 
 # Health check
 HealthCmd=wget -q --spider http://localhost:3200/ready || exit 1

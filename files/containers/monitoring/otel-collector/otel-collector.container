@@ -8,17 +8,22 @@ ContainerName=otel-collector
 #flag for autoupdates
 Label=io.containers.autoupdate=registry
 
+# Set config file location
+Environment=OTELCOL_CONFIG=/etc/otelcol-contrib/config.yaml
+
 # Run as local user to allow access to data directories
 User=0
 
 Network=monitoring.network
 
-PublishPort=4317:4317 # OTLP gRPC
-PublishPort=4318:4318 # OTLP HTTP
-PublishPort=8888:8888 # Metrics endpoint
+# OTLP gRPC
+PublishPort=4317:4317
+# OTLP HTTP
+PublishPort=4318:4318
+# Metrics endpoint
+PublishPort=8888:8888
 
 Volume=/etc/localtime:/etc/localtime:ro
-Volume=/mnt/data/otel-collector/config:/etc/otelcol-contrib
 Volume=/mnt/data/otel-collector/data:/data
 
 # Configure environment variables to direct telemetry to proper backends

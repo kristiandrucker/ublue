@@ -12,6 +12,9 @@ modules:
 
       - source: containers/monitoring
         destination: /etc/containers/systemd/
+        
+      - source: node/monitoring
+        destination: /
 
   - type: rpm-ostree
     install:
