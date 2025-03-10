@@ -1,0 +1,24 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        http:
+        grpc:
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /data
+    wal:
+      path: /data/wal
+    pool:
+      max_workers: 100
+      queue_depth: 10000
+
+compactor:
+  compaction:
+    block_retention: 2160h  # 90 days (matching environment variable)

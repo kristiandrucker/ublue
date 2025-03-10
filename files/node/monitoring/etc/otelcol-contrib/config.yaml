@@ -1,0 +1,40 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+processors:
+  batch:
+
+exporters:
+  otlp/metrics:
+    endpoint: "mimir:9009"
+    tls:
+      insecure: true
+  
+  otlp/traces:
+    endpoint: "tempo:4317"
+    tls:
+      insecure: true
+  
+  loki:
+    endpoint: "http://loki:3100/loki/api/v1/push"
+    tenant_id: "default"
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp/metrics]
+    
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp/traces]
+    
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [loki]
