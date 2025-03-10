@@ -16,6 +16,7 @@ Network=monitoring.network
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/grafana:/var/lib/grafana
 
+Environment=GF_SERVER_ROOT_URL=https://grafana.drkr.io
 Environment=GF_AUTH_GENERIC_OAUTH_ENABLED=true
 Environment=GF_AUTH_GENERIC_OAUTH_NAME=Auth
 Environment=GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=false
