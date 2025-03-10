@@ -9,7 +9,7 @@ ContainerName=mimir
 Label=io.containers.autoupdate=registry
 
 # Run as local user to allow access to data directories
-User=$(id -u):$(id -g)
+User=0
 
 Network=monitoring.network
 
