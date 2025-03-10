@@ -27,7 +27,7 @@ Environment=GF_AUTH_GENERIC_OAUTH_API_URL=https://auth.drkr.io/api/oidc/userinfo
 Environment=GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH=contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
 Environment=GF_AUTH_GENERIC_OAUTH_AUTO_LOGIN=true
 Environment=GF_AUTH_OAUTH_AUTO_LOGIN=true
-Environment=GF_AUTH_OAUTH_PKCE_ENABLED=true
+Environment=GF_AUTH_OAUTH_USE_PKCE=true
 Environment=GF_FEATURE_TOGGLES_ENABLE=publicDashboards
 
 # Health check
