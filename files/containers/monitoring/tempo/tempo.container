@@ -1,0 +1,24 @@
+[Unit]
+Description=Tempo Distributed Tracing (quadlet)
+
+[Container]
+Image=docker.io/grafana/tempo:latest
+ContainerName=tempo
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=monitoring.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/mnt/data/tempo/config:/etc/tempo
+Volume=/mnt/data/tempo/data:/data
+
+Environment=TEMPO_STORAGE_TRACE_RETENTION=2160h
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

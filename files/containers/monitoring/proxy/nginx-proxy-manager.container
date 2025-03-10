@@ -1,0 +1,25 @@
+[Unit]
+Description=Nginx Proxy Manager (quadlet)
+
+[Container]
+Image=docker.io/jc21/nginx-proxy-manager:latest
+ContainerName=monitoring-proxy
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=monitoring.network
+
+PublishPort=80:80
+PublishPort=443:443
+PublishPort=81:81
+
+Volume=/mnt/data/npm/data:/data
+Volume=/mnt/data/npm/letsencrypt:/etc/letsencrypt
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

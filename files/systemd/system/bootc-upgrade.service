@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly bootc OS upgrade
+After=podman-auto-update.service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bootc upgrade
+ExecStartPost=/usr/bin/systemctl reboot

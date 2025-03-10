@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly bootc OS upgrade timer
+After=podman-auto-update.timer
+
+[Timer]
+OnCalendar=Sun *-*-* 01:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

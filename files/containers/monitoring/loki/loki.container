@@ -1,0 +1,25 @@
+[Unit]
+Description=Loki Log Aggregation (quadlet)
+
+[Container]
+Image=docker.io/grafana/loki:latest
+ContainerName=loki
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=monitoring.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/mnt/data/loki/config:/etc/loki
+Volume=/mnt/data/loki/data:/data
+
+Environment=LOKI_RETENTION_PERIOD=2160h
+Environment=LOKI_RULER_EVALUATION_INTERVAL=1m
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

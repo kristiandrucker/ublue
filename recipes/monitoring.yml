@@ -1,5 +1,5 @@
-name: core
-description: Core services system image
+name: monitoring
+description: Observability and monitoring services system image
 
 base-image: ghcr.io/ublue-os/ucore-minimal
 image-version: stable
@@ -10,7 +10,7 @@ modules:
       - source: system
         destination: /
 
-      - source: containers/core
+      - source: containers/monitoring
         destination: /etc/containers/systemd/
 
   - type: rpm-ostree
@@ -25,7 +25,7 @@ modules:
   - type: systemd
     system:
       enabled:
-#        - var-mnt-media.mount
+        - var-mnt-data.mount
         - podman.service
         - tailscaled.service
         - cockpit.service

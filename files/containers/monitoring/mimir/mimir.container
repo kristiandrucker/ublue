@@ -1,0 +1,25 @@
+[Unit]
+Description=Mimir Metrics (quadlet)
+
+[Container]
+Image=docker.io/grafana/mimir:latest
+ContainerName=mimir
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=monitoring.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/mnt/data/mimir/config:/etc/mimir
+Volume=/mnt/data/mimir/data:/data
+
+Environment=MIMIR_BLOCKS_STORAGE_BUCKET_STORE_IGNORE_DELETION_MARKS_DELAY=90d
+Environment=MIMIR_COMPACTOR_DELETION_DELAY=90d
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

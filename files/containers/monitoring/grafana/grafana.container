@@ -1,0 +1,35 @@
+[Unit]
+Description=Grafana Observability Platform (quadlet)
+
+[Container]
+Image=docker.io/grafana/grafana:latest
+ContainerName=grafana
+
+#flag for autoupdates
+Label=io.containers.autoupdate=registry
+
+Network=monitoring.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/mnt/data/grafana:/var/lib/grafana
+
+Environment=GF_AUTH_GENERIC_OAUTH_ENABLED=true
+Environment=GF_AUTH_GENERIC_OAUTH_NAME=Auth
+Environment=GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=false
+Environment=GF_AUTH_GENERIC_OAUTH_CLIENT_ID=55d60845-56a3-4a48-9646-936574c27067
+Environment=GF_AUTH_GENERIC_OAUTH_SCOPES=openid profile email groups
+Environment=GF_AUTH_GENERIC_OAUTH_AUTH_URL=https://auth.drkr.io/authorize
+Environment=GF_AUTH_GENERIC_OAUTH_TOKEN_URL=https://auth.drkr.io/api/oidc/token
+Environment=GF_AUTH_GENERIC_OAUTH_API_URL=https://auth.drkr.io/api/oidc/userinfo
+Environment=GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH=contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+Environment=GF_AUTH_GENERIC_OAUTH_AUTO_LOGIN=true
+Environment=GF_AUTH_OAUTH_AUTO_LOGIN=true
+Environment=GF_AUTH_OAUTH_PKCE_ENABLED=true
+Environment=GF_FEATURE_TOGGLES_ENABLE=publicDashboards
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
