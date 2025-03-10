@@ -15,7 +15,7 @@ Network=monitoring.network
 
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/tempo/config:/etc/tempo
-Volume=/mnt/data/tempo/data:/data
+Volume=/mnt/data/tempo/data:/var/tempo
 
 Environment=TEMPO_STORAGE_TRACE_RETENTION=2160h
 Environment=TEMPO_SERVER_HTTP_LISTEN_PORT=3200
