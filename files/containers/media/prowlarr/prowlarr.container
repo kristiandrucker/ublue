@@ -15,6 +15,13 @@ PublishPort=9696:9696
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/prowlarr/config:/config
 
+# Health check
+HealthCmd=curl -f http://localhost:9696/api/v1/health || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

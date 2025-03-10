@@ -23,6 +23,13 @@ Environment=OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://mimir:9009/otlp
 Environment=OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://loki:3100/loki/api/v1/push
 Environment=OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://tempo:4317
 
+# Health check
+HealthCmd=wget -q --spider http://localhost:13133 || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

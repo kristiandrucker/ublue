@@ -34,6 +34,13 @@ Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/adguard-home/work:/opt/adguardhome/work
 Volume=/mnt/data/adguard-home/conf:/opt/adguardhome/conf
 
+# Health check
+HealthCmd=curl -f http://localhost:3000 || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

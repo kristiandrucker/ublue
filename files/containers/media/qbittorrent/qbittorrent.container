@@ -25,6 +25,13 @@ AddCapability=NET_ADMIN
 Sysctl=net.ipv4.conf.all.src_valid_mark=1
 Sysctl=net.ipv6.conf.all.disable_ipv6=1
 
+# Health check
+HealthCmd=curl -f http://localhost:8080/api/v2/app/version || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Unit]
 Requires=var-mnt-media.mount
 

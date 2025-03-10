@@ -17,6 +17,13 @@ Volume=/mnt/data/mimir/data:/data
 Environment=MIMIR_BLOCKS_STORAGE_BUCKET_STORE_IGNORE_DELETION_MARKS_DELAY=90d
 Environment=MIMIR_COMPACTOR_DELETION_DELAY=90d
 
+# Health check
+HealthCmd=wget -q --spider http://localhost:8080/ready || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

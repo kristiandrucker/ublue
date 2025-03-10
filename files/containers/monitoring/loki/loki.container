@@ -17,6 +17,13 @@ Volume=/mnt/data/loki/data:/data
 Environment=LOKI_RETENTION_PERIOD=2160h
 Environment=LOKI_RULER_EVALUATION_INTERVAL=1m
 
+# Health check
+HealthCmd=wget -q --spider http://localhost:3100/ready || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

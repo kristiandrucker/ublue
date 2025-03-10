@@ -16,6 +16,13 @@ Volume=/mnt/data/tempo/data:/data
 
 Environment=TEMPO_STORAGE_TRACE_RETENTION=2160h
 
+# Health check
+HealthCmd=wget -q --spider http://localhost:3200/ready || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

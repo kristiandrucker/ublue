@@ -17,6 +17,13 @@ PublishPort=81:81
 Volume=/mnt/data/proxy/config:/data
 Volume=/mnt/data/proxy/certs:/etc/letsencrypt
 
+# Health check
+HealthCmd=curl -f http://localhost:81 || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900

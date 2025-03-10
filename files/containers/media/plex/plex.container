@@ -30,6 +30,13 @@ PublishPort=32469:32469/tcp
 
 AddDevice=nvidia.com/gpu=all
 
+# Health check
+HealthCmd=curl -f http://localhost:32400/web/index.html || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Unit]
 Requires=var-mnt-media.mount
 

@@ -17,6 +17,13 @@ Volume=/mnt/data/audiobookshelf/config:/config
 Volume=/mnt/data/audiobookshelf/metadata:/metadata
 Volume=/mnt/media:/audiobooks
 
+# Health check
+HealthCmd=curl -f http://localhost:80/ping || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Unit]
 Requires=var-mnt-media.mount
 

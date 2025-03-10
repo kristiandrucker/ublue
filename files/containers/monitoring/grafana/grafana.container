@@ -27,6 +27,13 @@ Environment=GF_AUTH_OAUTH_AUTO_LOGIN=true
 Environment=GF_AUTH_OAUTH_PKCE_ENABLED=true
 Environment=GF_FEATURE_TOGGLES_ENABLE=publicDashboards
 
+# Health check
+HealthCmd=wget -q --spider http://localhost:3000/api/health || exit 1
+HealthInterval=30s
+HealthRetries=3
+HealthStartPeriod=60s
+HealthTimeout=10s
+
 [Service]
 Restart=always
 TimeoutStartSec=900
