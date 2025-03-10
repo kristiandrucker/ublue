@@ -8,10 +8,13 @@ ContainerName=loki
 #flag for autoupdates
 Label=io.containers.autoupdate=registry
 
+# Run as local user to allow access to data directories
+User=$(id -u):$(id -g)
+
 Network=monitoring.network
 
 Volume=/etc/localtime:/etc/localtime:ro
-Volume=/mnt/data/loki/config:/etc/loki
+# Volume=/mnt/data/loki/config:/etc/loki
 Volume=/mnt/data/loki/data:/data
 
 Environment=LOKI_RETENTION_PERIOD=2160h

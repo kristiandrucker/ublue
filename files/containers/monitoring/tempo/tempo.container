@@ -8,6 +8,9 @@ ContainerName=tempo
 #flag for autoupdates
 Label=io.containers.autoupdate=registry
 
+# Run as local user to allow access to data directories
+User=$(id -u):$(id -g)
+
 Network=monitoring.network
 
 Volume=/etc/localtime:/etc/localtime:ro
@@ -15,6 +18,7 @@ Volume=/mnt/data/tempo/config:/etc/tempo
 Volume=/mnt/data/tempo/data:/data
 
 Environment=TEMPO_STORAGE_TRACE_RETENTION=2160h
+Environment=TEMPO_SERVER_HTTP_LISTEN_PORT=3200
 
 # Health check
 HealthCmd=wget -q --spider http://localhost:3200/ready || exit 1

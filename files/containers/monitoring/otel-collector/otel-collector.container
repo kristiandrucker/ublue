@@ -8,6 +8,9 @@ ContainerName=otel-collector
 #flag for autoupdates
 Label=io.containers.autoupdate=registry
 
+# Run as local user to allow access to data directories
+User=$(id -u):$(id -g)
+
 Network=monitoring.network
 
 PublishPort=4317:4317 # OTLP gRPC
