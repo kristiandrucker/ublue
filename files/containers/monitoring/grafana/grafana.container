@@ -16,10 +16,12 @@ Network=monitoring.network
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/mnt/data/grafana:/var/lib/grafana
 
+EnvironmentFile=/etc/secrets/grafana.env
+
 Environment=GF_SERVER_ROOT_URL=https://grafana.drkr.io
 Environment=GF_AUTH_GENERIC_OAUTH_ENABLED=true
 Environment=GF_AUTH_GENERIC_OAUTH_NAME=Auth
-Environment=GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=false
+Environment=GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=true
 Environment=GF_AUTH_GENERIC_OAUTH_CLIENT_ID=55d60845-56a3-4a48-9646-936574c27067
 Environment=GF_AUTH_GENERIC_OAUTH_SCOPES="openid profile email groups"
 Environment=GF_AUTH_GENERIC_OAUTH_AUTH_URL=https://auth.drkr.io/authorize
